@@ -4,7 +4,7 @@ import numpy as np
 import keras
 
 # Set up page title and layout
-st.set_page_config(page_title="Leaf Disease Detection", page_icon="🌿", layout="centered")
+st.set_page_config(page_title="Advanced Leaf Disease Detection", page_icon="🌿", layout="wide")
 
 # Add custom CSS for styling
 st.markdown("""
@@ -45,16 +45,42 @@ st.markdown("""
             font-size: 18px;
             color: #2e8b57;
         }
+        .sidebar .sidebar-content {
+            font-size: 18px;
+            color: #333333;
+        }
     </style>
 """, unsafe_allow_html=True)
 
-# Display the title and description in a structured way
-st.title("🌿 Leaf Disease Detection")
-st.markdown("""
-This application uses **deep learning** to detect various leaf diseases. 
-The model is built using **transfer learning**, leveraging a pre-trained base model to identify diseases in different types of plants.
+# Header section
+st.markdown("<h1 class='header'>🌿 Advanced Leaf Disease Detection</h1>", unsafe_allow_html=True)
 
-**Please upload a leaf image of Apple, Cherry, Corn, Grape, Peach, Pepper, Potato, Strawberry, or Tomato** for accurate predictions.
+# Sidebar with brief introduction to the app
+st.sidebar.header("About the App")
+st.sidebar.markdown("""
+    This application uses **deep learning** techniques to detect various leaf diseases. 
+    It utilizes **transfer learning**, leveraging a pre-trained base model to identify diseases in different plant species, including:
+    
+    - Apple
+    - Cherry
+    - Corn
+    - Grape
+    - Peach
+    - Pepper
+    - Potato
+    - Strawberry
+    - Tomato
+
+    **How it works:**
+    - Upload a leaf image.
+    - The model predicts the disease and provides a confidence level.
+    - Based on the prediction, the app will suggest whether the leaf is healthy or affected by a particular disease.
+""")
+
+# Main content
+st.markdown("""
+This tool helps farmers, researchers, and plant enthusiasts to identify and diagnose diseases affecting different plant species based on their leaf images. 
+Upload a leaf image, and get quick results with a high confidence level!
 """)
 
 # Load the model
@@ -91,13 +117,10 @@ if uploaded_file is not None:
         confidence = predictions[0][predicted_class] * 100
         result = label_name[predicted_class]
 
-        # Check if the plant is healthy or affected
-        health_status = "Healthy" if "healthy" in result.lower() else "Affected"
-
         # Provide a professional and interactive result display
         if confidence >= 80:
             st.markdown(f"### 🌿 **Prediction Result**")
-            st.markdown(f"**Health Status:** {health_status}")
+            st.markdown(f"**Disease:** {result}")
             st.markdown(f"**Confidence Level:** {confidence:.2f}%")
             st.success("The model is confident about this prediction.")
         else:
