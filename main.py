@@ -73,8 +73,8 @@ st.sidebar.markdown("""
 
     **How it works:**
     - Upload a leaf image.
-    - The model predicts the disease and provides a confidence level.
-    - Based on the prediction, the app will suggest whether the leaf is healthy or affected by a particular disease.
+    - The model predicts whether the leaf is **healthy** or **affected** by a disease.
+    - The app will display the confidence level of the prediction.
 """)
 
 # Main content
@@ -86,7 +86,7 @@ Upload a leaf image, and get quick results with a high confidence level!
 # Load the model
 model = keras.models.load_model('Training/model/Leaf Deases(96,88).h5')
 
-# Define the disease labels
+# Define the disease labels (for model reference)
 label_name = ['Apple scab', 'Apple Black rot', 'Apple Cedar apple rust', 'Apple healthy', 'Cherry Powdery mildew',
               'Cherry healthy', 'Corn Cercospora leaf spot Gray leaf spot', 'Corn Common rust', 'Corn Northern Leaf Blight', 'Corn healthy', 
               'Grape Black rot', 'Grape Esca', 'Grape Leaf blight', 'Grape healthy', 'Peach Bacterial spot', 'Peach healthy', 
@@ -115,7 +115,12 @@ if uploaded_file is not None:
         # Process prediction result
         predicted_class = np.argmax(predictions)
         confidence = predictions[0][predicted_class] * 100
-        result = label_name[predicted_class]
+        
+        # Determine health status based on prediction (healthy vs affected)
+        if 'healthy' in label_name[predicted_class]:
+            health_status = 'Healthy'
+        else:
+            health_status = 'Affected'
 
         # Provide a professional and interactive result display
         if confidence >= 80:
