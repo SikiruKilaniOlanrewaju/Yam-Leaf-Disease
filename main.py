@@ -62,9 +62,9 @@ st.sidebar.markdown("""
     It leverages **transfer learning** with a pre-trained base model to accurately identify diseases:
     
     **Key symptoms include**:
-    - **Leaves**: Yellowing, necrotic spots, and lesions.
-    - **Tubers**: Soft rot, dark lesions, and sunken spots.
-    - **Vines**: Wilting and dieback.
+- **Leaves**: Yellowing, necrotic spots, and lesions.
+- **Tubers**: Soft rot, dark lesions, and sunken spots.
+- **Vines**: Wilting and dieback.
 
     **How it works:**
     1. Upload a leaf image.
@@ -101,10 +101,7 @@ if uploaded_file is not None:
     # Process the uploaded image
     image_bytes = uploaded_file.read()
     img = cv.imdecode(np.frombuffer(image_bytes, dtype=np.uint8), cv.IMREAD_COLOR)
-    
-    # Resize and normalize image
-    resized_img = cv.resize(cv.cvtColor(img, cv.COLOR_BGR2RGB), (150, 150))  # Resize to 150x150
-    normalized_image = np.expand_dims(resized_img, axis=0) / 255.0  # Normalize to [0,1]
+    normalized_image = np.expand_dims(cv.resize(cv.cvtColor(img, cv.COLOR_BGR2RGB), (150, 150)), axis=0)
 
     # Show a progress spinner while predicting
     with st.spinner("Analyzing the image..."):
