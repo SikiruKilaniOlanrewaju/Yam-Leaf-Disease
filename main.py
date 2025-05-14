@@ -58,8 +58,8 @@ st.markdown("<h1 class='header'>🌿 Advanced Leaf Disease Detection</h1>", unsa
 # Sidebar with brief introduction to the app
 st.sidebar.header("About the App")
 st.sidebar.markdown("""
-    This application uses **deep learning** techniques to detect various leaf diseases. 
-    It utilizes **transfer learning**, leveraging a pre-trained base model to identify diseases in different plant species, including:
+    This application uses **deep learning** techniques to detect various leaf diseases in plants.
+    It leverages **transfer learning** with a pre-trained base model to accurately identify diseases in multiple plant species, including:
     
     - Apple
     - Cherry
@@ -72,15 +72,24 @@ st.sidebar.markdown("""
     - Tomato
 
     **How it works:**
-    - Upload a leaf image.
-    - The model predicts whether the leaf is **healthy** or **affected** by a disease.
-    - The app will display the confidence level of the prediction.
+    1. Upload a leaf image.
+    2. The model predicts whether the leaf is **healthy** or **affected** by a disease.
+    3. It will display the confidence level of the prediction.
 """)
 
 # Main content
 st.markdown("""
-This tool helps farmers, researchers, and plant enthusiasts to identify and diagnose diseases affecting different plant species based on their leaf images. 
-Upload a leaf image, and get quick results with a high confidence level!
+Welcome to the **Advanced Leaf Disease Detection** tool! This app helps farmers, researchers, and plant enthusiasts detect diseases affecting various plants through deep learning. Simply upload a leaf image, and our model will quickly analyze it and provide the result with a confidence level.
+
+#### **Yam Anthracnose Disease Overview:**
+Yam Anthracnose, caused by the fungus *Colletotrichum spp.*, is a destructive disease that affects yam plants, especially during the humid growing seasons. The disease primarily impacts yam tubers, leaves, and vines, leading to rotting, lesions, and reduced crop yield. Farmers often face significant losses due to this disease, and early detection is crucial to prevent widespread damage.
+
+Key symptoms include:
+- **Leaves**: Yellowing, necrotic spots, and lesions.
+- **Tubers**: Soft rot, dark lesions, and sunken spots.
+- **Vines**: Wilting and dieback.
+
+Early detection and management practices such as fungicide application, proper spacing, and using resistant yam varieties are essential to control the spread of Anthracnose. This app aims to assist in the early diagnosis of such diseases, ensuring better crop health and increased yields.
 """)
 
 # Load the model
