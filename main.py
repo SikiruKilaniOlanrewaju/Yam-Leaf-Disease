@@ -68,7 +68,9 @@ def show_welcome_screen():
     
     # Button to proceed to the main detection functionality
     if st.button("Proceed to Test a Leaf"):
-        show_leaf_disease_detection()
+        # Set a session state variable to track progress
+        st.session_state.proceeded_to_test = True
+        st.experimental_rerun()
 
 # Main leaf disease detection page
 def show_leaf_disease_detection():
@@ -129,5 +131,10 @@ def show_leaf_disease_detection():
         if st.button('Upload Another Image'):
             st.experimental_rerun()
 
-# Show the welcome screen initially
-show_welcome_screen()
+# Check if the user has proceeded to the testing page
+if 'proceeded_to_test' not in st.session_state:
+    # If the user has not clicked the proceed button, show the welcome screen
+    show_welcome_screen()
+else:
+    # If the user has clicked proceed, show the leaf disease detection page
+    show_leaf_disease_detection()
