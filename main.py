@@ -91,10 +91,13 @@ if uploaded_file is not None:
         confidence = predictions[0][predicted_class] * 100
         result = label_name[predicted_class]
 
+        # Check if the plant is healthy or affected
+        health_status = "Healthy" if "healthy" in result.lower() else "Affected"
+
         # Provide a professional and interactive result display
         if confidence >= 80:
             st.markdown(f"### 🌿 **Prediction Result**")
-            st.markdown(f"**Disease:** {result}")
+            st.markdown(f"**Health Status:** {health_status}")
             st.markdown(f"**Confidence Level:** {confidence:.2f}%")
             st.success("The model is confident about this prediction.")
         else:
