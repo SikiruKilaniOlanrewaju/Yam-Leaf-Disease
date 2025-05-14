@@ -4,7 +4,7 @@ import numpy as np
 import keras
 
 # Set up page title and layout
-st.set_page_config(page_title="Leaf Disease Detection", page_icon="🌿", layout="centered")
+st.set_page_config(page_title="Yam Leaf Disease Detection", page_icon="🌿", layout="centered")
 
 # Add custom CSS for styling
 st.markdown("""
@@ -50,9 +50,9 @@ st.markdown("""
 
 # Display the welcome screen
 def show_welcome_screen():
-    st.markdown("<h1 class='header'>🌿 Welcome to the Leaf Disease Detection</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='header'>🌿 YAM LEAF DISEASE DETECTION SYSTEM</h1>", unsafe_allow_html=True)
     st.markdown("""
-    **Welcome to the Leaf Disease Detection application!**
+    **Welcome to the Yam Leaf Disease Detection application!**
 
     This app uses **deep learning** techniques to detect various diseases in plants by analyzing uploaded leaf images. 
     It leverages **transfer learning** and a pre-trained model to give accurate results. 
@@ -74,7 +74,7 @@ def show_welcome_screen():
 
 # Main leaf disease detection page
 def show_leaf_disease_detection():
-    st.title("🌿 Leaf Disease Detection")
+    st.title("🌿 Yam Leaf Disease Detection")
     st.markdown("""
     This application uses **deep learning** to detect various leaf diseases. 
     The model is built using **transfer learning**, leveraging a pre-trained base model to identify diseases in different types of plants.
