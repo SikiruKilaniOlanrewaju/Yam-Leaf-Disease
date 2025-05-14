@@ -120,7 +120,7 @@ if uploaded_file is not None:
         # Provide a professional and interactive result display
         if confidence >= 80:
             st.markdown(f"### 🌿 **Prediction Result**")
-            st.markdown(f"**Disease:** {result}")
+            st.markdown(f"**Health Status:** {health_status}")
             st.markdown(f"**Confidence Level:** {confidence:.2f}%")
             st.success("The model is confident about this prediction.")
         else:
