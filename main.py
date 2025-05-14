@@ -131,6 +131,12 @@ def show_leaf_disease_detection():
         if st.button('Upload Another Image'):
             st.experimental_rerun()
 
+    # Add a button to go back to the welcome screen
+    if st.button("Go Back to Welcome Screen"):
+        # Reset the session state to go back to the welcome page
+        del st.session_state.proceeded_to_test
+        st.experimental_rerun()
+
 # Check if the user has proceeded to the testing page
 if 'proceeded_to_test' not in st.session_state:
     # If the user has not clicked the proceed button, show the welcome screen
