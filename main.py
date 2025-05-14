@@ -14,7 +14,7 @@ st.markdown("""
             font-family: 'Segoe UI', sans-serif;
         }
         .stButton > button {
-            background-color: black;
+            background-color: red;
             color: white;
             font-weight: bold;
             padding: 12px 30px;
@@ -50,7 +50,7 @@ st.markdown("""
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #4CAF50;
+            background-color: black;
             color: white;
             text-align: center;
             padding: 10px;
@@ -94,8 +94,9 @@ def show_welcome_screen():
     # About the developer section
     st.markdown("""
     <div class="about-developer">
-        <p>Developed by Kilani Sikiru Olanrewaju</p>
-        <p>Contact: kilanisikiruolanrewaju@gmail.com</p>
+        <p>Developed by Mubaraq Salaudeen</p>
+         <p>Project Student - OYSCATECH</p>
+        <p>Contact: .......@gmail.com</p>
     </div>
     """, unsafe_allow_html=True)
 
