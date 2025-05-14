@@ -65,7 +65,7 @@ label_name = ['Apple scab', 'Apple Black rot', 'Apple Cedar apple rust', 'health
               'healthy', 'Corn Cercospora leaf spot Gray leaf spot', 'Corn Common rust', 'Corn Northern Leaf Blight', 'healthy', 
               'Grape Black rot', 'Grape Esca', 'Grape Leaf blight', 'healthy', 'Peach Bacterial spot', 'healthy', 
               'Bacterial spot', 'healthy', 'Early blight', 'Late blight', 'healthy', 
-              'Leaf scorch', 'healthy', 'Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Late blight', 
+              'Anthracnose Leaf scorch', 'healthy', 'Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Late blight', 
               'Tomato Leaf Mold', 'Tomato Septoria leaf spot', 'Tomato Spider mites', 'Tomato Target Spot', 
               'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
 
