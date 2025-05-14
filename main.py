@@ -45,6 +45,25 @@ st.markdown("""
             font-size: 18px;
             color: #2e8b57;
         }
+        /* Footer styling */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .about-developer {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2e8b57;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -71,6 +90,14 @@ def show_welcome_screen():
         # Set a session state variable to track progress
         st.session_state.proceeded_to_test = True
         st.experimental_rerun()
+
+    # About the developer section
+    st.markdown("""
+    <div class="about-developer">
+        <p>Developed by Kilani Sikiru Olanrewaju</p>
+        <p>Contact: kilanisikiruolanrewaju@gmail.com</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Main leaf disease detection page
 def show_leaf_disease_detection():
@@ -144,3 +171,10 @@ if 'proceeded_to_test' not in st.session_state:
 else:
     # If the user has clicked proceed, show the leaf disease detection page
     show_leaf_disease_detection()
+
+# Add footer to both pages
+st.markdown("""
+    <footer>
+        <p>&copy; 2025 Kilani Sikiru Olanrewaju. All rights reserved.</p>
+    </footer>
+""", unsafe_allow_html=True)
