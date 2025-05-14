@@ -92,7 +92,7 @@ label_name = ['Apple scab', 'Apple Black rot', 'Apple Cedar apple rust', 'Apple 
               'Pepper bell Bacterial spot', 'Pepper bell healthy', 'Potato Early blight', 'Potato Late blight', 'Potato healthy', 
               'Strawberry Leaf scorch', 'Strawberry healthy', 'Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Late blight', 
               'Tomato Leaf Mold', 'Tomato Septoria leaf spot', 'Tomato Spider mites', 'Tomato Target Spot', 
-              'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
+              'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Healthy']
 
 # Image upload interface
 uploaded_file = st.file_uploader("Upload a Leaf Image", type=["jpg", "jpeg", "png"])
