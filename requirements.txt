@@ -1,7 +1,7 @@
 tensorflow==2.19.0
 streamlit==1.27.1
+numpy==1.26.2
 
-numpy==1.24.3
 opencv-python-headless==4.8.0.76
 Pillow
 matplotlib
