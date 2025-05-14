@@ -62,12 +62,12 @@ model = keras.models.load_model('Training/model/Leaf Deases(96,88).h5')
 
 # Define the disease labels
 label_name = ['cab', 'Black rot', 'rust', 'healthy', 'mildew',
-              'healthy', 'leaf spot Gray leaf spot', 'Corn Common rust', 'Corn Northern Leaf Blight', 'healthy', 
-              'Grape Black rot', 'Grape Esca', 'Grape Leaf blight', 'healthy', 'Peach Bacterial spot', 'healthy', 
+              'healthy', 'leaf spot Gray leaf spot', 'Common rust', 'Leaf Blight', 'healthy', 
+              'Black rot', 'Grape Esca', 'Grape Leaf blight', 'healthy', 'Peach Bacterial spot', 'healthy', 
               'Bacterial spot', 'healthy', 'Early blight', 'Late blight', 'healthy', 
-              'Anthracnose Leaf scorch', 'healthy', 'Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Late blight', 
-              'Tomato Leaf Mold', 'Tomato Septoria leaf spot', 'Tomato Spider mites', 'Tomato Target Spot', 
-              'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
+              'Anthracnose Leaf scorch', 'healthy', 'Bacterial spot', 'Early blight', 'Late blight', 
+              'Leaf Mold', 'Septoria leaf spot', 'Spider mites', 'Spot', 
+              'Yellow Leaf Curl Virus', 'virus', 'healthy']
 
 # Image upload interface
 uploaded_file = st.file_uploader("Upload a Leaf Image", type=["jpg", "jpeg", "png"])
