@@ -61,10 +61,10 @@ The model is built using **transfer learning**, leveraging a pre-trained base mo
 model = keras.models.load_model('Training/model/Leaf Deases(96,88).h5')
 
 # Define the disease labels
-label_name = ['Apple scab', 'Apple Black rot', 'Apple Cedar apple rust', 'Apple healthy', 'Cherry Powdery mildew',
-              'Cherry healthy', 'Corn Cercospora leaf spot Gray leaf spot', 'Corn Common rust', 'Corn Northern Leaf Blight', 'Corn healthy', 
-              'Grape Black rot', 'Grape Esca', 'Grape Leaf blight', 'Grape healthy', 'Peach Bacterial spot', 'Peach healthy', 
-              'Pepper bell Bacterial spot', 'healthy', 'Potato Early blight', 'Potato Late blight', 'Potato healthy', 
+label_name = ['Apple scab', 'Apple Black rot', 'Apple Cedar apple rust', 'healthy', 'Cherry Powdery mildew',
+              'healthy', 'Corn Cercospora leaf spot Gray leaf spot', 'Corn Common rust', 'Corn Northern Leaf Blight', 'healthy', 
+              'Grape Black rot', 'Grape Esca', 'Grape Leaf blight', 'healthy', 'Peach Bacterial spot', 'healthy', 
+              'Bacterial spot', 'healthy', 'Early blight', 'Late blight', 'healthy', 
               'Strawberry Leaf scorch', 'Strawberry healthy', 'Tomato Bacterial spot', 'Tomato Early blight', 'Tomato Late blight', 
               'Tomato Leaf Mold', 'Tomato Septoria leaf spot', 'Tomato Spider mites', 'Tomato Target Spot', 
               'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
