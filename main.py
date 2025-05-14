@@ -171,10 +171,3 @@ if 'proceeded_to_test' not in st.session_state:
 else:
     # If the user has clicked proceed, show the leaf disease detection page
     show_leaf_disease_detection()
-
-# Add footer to both pages
-st.markdown("""
-    <footer>
-        <p>&copy; 2025 Kilani Sikiru Olanrewaju. All rights reserved.</p>
-    </footer>
-""", unsafe_allow_html=True)
