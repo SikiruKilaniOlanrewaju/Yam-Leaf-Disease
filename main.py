@@ -3,10 +3,10 @@ import cv2 as cv
 import numpy as np
 import keras
 
-# Set up page title and layout
+# Page config
 st.set_page_config(page_title="Yam Leaf Disease Detection", page_icon="🌿", layout="centered")
 
-# Add custom CSS for styling
+# Custom CSS
 st.markdown("""
     <style>
         .css-1d391kg {
@@ -45,7 +45,6 @@ st.markdown("""
             font-size: 18px;
             color: #2e8b57;
         }
-        /* Footer styling */
         footer {
             position: fixed;
             bottom: 0;
@@ -67,53 +66,77 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Display the welcome screen
+# Language options
+lang = st.sidebar.selectbox("🌍 Select Language / Yan Ede:", ["English", "Yoruba"])
+
+# Translation dictionary
+def t(en_text):
+    translations = {
+        "Welcome to the Yam Leaf Disease Detection application!": "Kaabo si Eto Idanimọ Arun Ewe Isu!",
+        "This app uses **deep learning** techniques to detect various diseases in plants by analyzing uploaded leaf images.": "App yii nlo **ẹ̀kọ́ jinlẹ̀** lati mọ awọn arun orisirisi ninu awọn ohun ọgbin nipa ayewo aworan ewe ti a gbe soke.",
+        "It leverages **transfer learning** and a pre-trained model to give accurate results.": "O lo **ẹ̀kọ́ gbigbe** ati awoṣe ti a ti kọ́ tẹlẹ lati fun ni abajade deede.",
+        "The app supports detection of Yam Anthracnose disease and others.": "App naa n ṣe idanimọ Arun Anthracnose ati awọn miiran lori ewe isu.",
+        "How to Use:": "Bá a ṣe n Lo:",
+        "Upload a leaf image of the plant you want to test.": "Gbe aworan ewe ti o fẹ ṣe ayewo si oke.",
+        "The app will predict whether the leaf is affected by disease or is healthy.": "App naa yoo sọ boya ewe naa ni arun tabi o ni ilera.",
+        "You will see the confidence level of the prediction.": "Ipele igbẹkẹle esi naa yoo han.",
+        "Proceed to Test a Leaf": "Tẹsiwaju lati Ṣayẹwo Ewe",
+        "Go Back to Welcome Screen": "Pada si Iboju Ifihan",
+        "Yam Leaf Disease Detection": "Idanimọ Arun Ewe Isu",
+        "Please upload a leaf image of any Yam": "Jowo gbe aworan ewe isu kan sii",
+        "Upload a Leaf Image": "Gbe Aworan Ewe sii",
+        "Analyzing the image...": "N ṣe itupalẹ aworan naa...",
+        "Prediction Result": "Abajade Asọtẹlẹ",
+        "Disease:": "Arun:",
+        "Confidence Level:": "Ipele Igbekele:",
+        "The model is confident about this prediction.": "Awoṣe naa ni igbẹkẹle lori asọtẹlẹ yii.",
+        "Low Confidence": "Igbekele Kekere",
+        "The model's confidence is below 80%. Please upload a clearer image or try again.": "Igbekele awoṣe naa kere ju 80%. Jọwọ gbe aworan ti o ye diẹ sii tabi gbiyanju lẹẹkansi.",
+        "Confidence:": "Igbekele:",
+        "Upload Another Image": "Gbe Aworan Miran sii",
+        "Developed by Mubaraq Salaudeen": "A ṣe apẹrẹ nipasẹ Mubaraq Salaudeen",
+        "Project Student - OYSCATECH": "Akẹkọ iṣẹ akanṣe - OYSCATECH",
+        "Contact: .......@gmail.com": "Pe: .......@gmail.com",
+    }
+    return translations.get(en_text, en_text) if lang == "Yoruba" else en_text
+
+# Welcome Screen
 def show_welcome_screen():
     st.markdown("<h1 class='header'>🌿 YAM LEAF DISEASE DETECTION SYSTEM</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    **Welcome to the Yam Leaf Disease Detection application!**
-
-    This app uses **deep learning** techniques to detect various diseases in plants by analyzing uploaded leaf images. 
-    It leverages **transfer learning** and a pre-trained model to give accurate results. 
-    The app supports detection of Yam Anthracnose disease and others.
-
-    #### How to Use:
-    1. Upload a leaf image of the plant you want to test.
-    2. The app will predict whether the leaf is affected by disease or is healthy.
-    3. You will see the confidence level of the prediction.
-
-    Press the button below to begin testing your leaf images.
-    """)
+    st.markdown(f"**{t('Welcome to the Yam Leaf Disease Detection application!')}**\n\n" +
+                f"{t('This app uses **deep learning** techniques to detect various diseases in plants by analyzing uploaded leaf images.')}\n\n" +
+                f"{t('It leverages **transfer learning** and a pre-trained model to give accurate results.')}\n\n" +
+                f"{t('The app supports detection of Yam Anthracnose disease and others.')}")
     
-    # Button to proceed to the main detection functionality
-    if st.button("Proceed to Test a Leaf"):
-        # Set a session state variable to track progress
+    st.markdown(f"#### {t('How to Use:')}")
+    st.markdown(f"1. {t('Upload a leaf image of the plant you want to test.')}")
+    st.markdown(f"2. {t('The app will predict whether the leaf is affected by disease or is healthy.')}")
+    st.markdown(f"3. {t('You will see the confidence level of the prediction.')}")
+    
+    if st.button(t("Proceed to Test a Leaf")):
         st.session_state.proceeded_to_test = True
         st.experimental_rerun()
 
-    # About the developer section
-    st.markdown("""
+    st.markdown(f"""
     <div class="about-developer">
-        <p>Developed by Mubaraq Salaudeen</p>
-         <p>Project Student - OYSCATECH</p>
-        <p>Contact: .......@gmail.com</p>
+        <p>{t('Developed by Mubaraq Salaudeen')}</p>
+        <p>{t('Project Student - OYSCATECH')}</p>
+        <p>{t('Contact: .......@gmail.com')}</p>
     </div>
     """, unsafe_allow_html=True)
 
-# Main leaf disease detection page
+# Detection Page
 def show_leaf_disease_detection():
-    st.title("🌿 Yam Leaf Disease Detection")
-    st.markdown("""
-    This application uses **deep learning** to detect various leaf diseases. 
-    The model is built using **transfer learning**, leveraging a pre-trained base model to identify diseases in different types of plants.
+    st.title(f"🌿 {t('Yam Leaf Disease Detection')}")
+    st.markdown(f"""
+    {t("This application uses **deep learning** to detect various leaf diseases.")}  
+    {t("The model is built using **transfer learning**, leveraging a pre-trained base model to identify diseases in different types of plants.")}
 
-    **Please upload a leaf image of any Yam** for accurate predictions.
+    **{t('Please upload a leaf image of any Yam')}**
     """)
 
-    # Load the model
     model = keras.models.load_model('Training/model/Leaf Deases(96,88).h5')
 
-    # Define the disease labels
     label_name = ['cab', 'Black rot', 'rust', 'healthy', 'mildew',
                   'healthy', 'leaf spot Gray leaf spot', 'Common rust', 'Leaf Blight', 'healthy', 
                   'Black rot', 'Grape Esca', 'Grape Leaf blight', 'healthy', 'Peach Bacterial spot', 'healthy', 
@@ -122,53 +145,40 @@ def show_leaf_disease_detection():
                   'Leaf Mold', 'Septoria leaf spot', 'Spider mites', 'Spot', 
                   'Yellow Leaf Curl Virus', 'virus', 'healthy']
 
-    # Image upload interface
-    uploaded_file = st.file_uploader("Upload a Leaf Image", type=["jpg", "jpeg", "png"])
+    uploaded_file = st.file_uploader(t("Upload a Leaf Image"), type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
-        # Process the uploaded image
         image_bytes = uploaded_file.read()
         img = cv.imdecode(np.frombuffer(image_bytes, dtype=np.uint8), cv.IMREAD_COLOR)
         normalized_image = np.expand_dims(cv.resize(cv.cvtColor(img, cv.COLOR_BGR2RGB), (150, 150)), axis=0)
 
-        # Show a progress spinner while predicting
-        with st.spinner("Analyzing the image..."):
-            # Predict disease
+        with st.spinner(t("Analyzing the image...")):
             predictions = model.predict(normalized_image)
-            
-            # Display the uploaded image
-            st.image(image_bytes, caption="Uploaded Leaf Image", use_column_width=True, channels="RGB")
+            st.image(image_bytes, caption=t("Uploaded Leaf Image"), use_column_width=True, channels="RGB")
 
-            # Process prediction result
             predicted_class = np.argmax(predictions)
             confidence = predictions[0][predicted_class] * 100
             result = label_name[predicted_class]
 
-            # Provide a professional and interactive result display
             if confidence >= 80:
-                st.markdown(f"### 🌿 **Prediction Result**")
-                st.markdown(f"**Disease:** {result}")
-                st.markdown(f"**Confidence Level:** {confidence:.2f}%")
-                st.success("The model is confident about this prediction.")
+                st.markdown(f"### 🌿 **{t('Prediction Result')}**")
+                st.markdown(f"**{t('Disease:')} {result}**")
+                st.markdown(f"**{t('Confidence Level:')} {confidence:.2f}%**")
+                st.success(t("The model is confident about this prediction."))
             else:
-                st.warning("⚠️ **Low Confidence**")
-                st.markdown("The model's confidence is below 80%. Please upload a clearer image or try again.")
-                st.markdown(f"**Confidence:** {confidence:.2f}%")
-            
-        # Optionally, add a button to upload another image
-        if st.button('Upload Another Image'):
+                st.warning(f"⚠️ **{t('Low Confidence')}**")
+                st.markdown(t("The model's confidence is below 80%. Please upload a clearer image or try again."))
+                st.markdown(f"**{t('Confidence:')} {confidence:.2f}%**")
+
+        if st.button(t("Upload Another Image")):
             st.experimental_rerun()
 
-    # Add a button to go back to the welcome screen
-    if st.button("Go Back to Welcome Screen"):
-        # Reset the session state to go back to the welcome page
+    if st.button(t("Go Back to Welcome Screen")):
         del st.session_state.proceeded_to_test
         st.experimental_rerun()
 
-# Check if the user has proceeded to the testing page
+# App Routing
 if 'proceeded_to_test' not in st.session_state:
-    # If the user has not clicked the proceed button, show the welcome screen
     show_welcome_screen()
 else:
-    # If the user has clicked proceed, show the leaf disease detection page
     show_leaf_disease_detection()
