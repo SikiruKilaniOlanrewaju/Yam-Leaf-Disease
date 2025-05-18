@@ -4,7 +4,7 @@ import numpy as np
 import keras
 
 # Page config
-st.set_page_config(page_title="Yam Leaf Disease Detection", page_icon="🌿", layout="centered")
+st.set_page_config(page_title="Yam Leaf Disease Detection -- Ewe isu yin ni arun Anthracnose", page_icon="🌿", layout="centered")
 
 # Custom CSS
 st.markdown("""
