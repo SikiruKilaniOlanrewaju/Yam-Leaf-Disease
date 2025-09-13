@@ -1,7 +1,7 @@
 import streamlit as st
 import cv2 as cv
 import numpy as np
-import keras
+from keras.models import load_model   # ✅ Correct import
 
 # Page config
 st.set_page_config(page_title="Yam Leaf Disease Detection -- Ewe isu yin ni arun Anthracnose", page_icon="🌿", layout="centered")
@@ -115,7 +115,7 @@ def show_welcome_screen():
     
     if st.button(t("Proceed to Test a Leaf")):
         st.session_state.proceeded_to_test = True
-        st.experimental_rerun()
+        st.rerun()   # ✅ Updated
 
     st.markdown(f"""
     <div class="about-developer">
@@ -135,8 +135,12 @@ def show_leaf_disease_detection():
     **{t('Please upload a leaf image of any Yam')}**
     """)
 
-    model = load_model("Training/model/Leaf Deases(96,88).h5", compile=False, safe_mode=False)
-
+    # ✅ Wrapped with try/except for safety
+    try:
+        model = load_model("Training/model/Leaf Deases(96,88).h5", compile=False, safe_mode=False)
+    except Exception as e:
+        st.error(f"Model load failed: {e}")
+        return
 
     label_name = ['cab', 'Black rot', 'rust', 'healthy', 'mildew',
                   'healthy', 'leaf spot Gray leaf spot', 'Common rust', 'Leaf Blight', 'healthy', 
@@ -172,11 +176,11 @@ def show_leaf_disease_detection():
                 st.markdown(f"**{t('Confidence:')} {confidence:.2f}%**")
 
         if st.button(t("Upload Another Image")):
-            st.experimental_rerun()
+            st.rerun()   # ✅ Updated
 
     if st.button(t("Go Back to Welcome Screen")):
         del st.session_state.proceeded_to_test
-        st.experimental_rerun()
+        st.rerun()   # ✅ Updated
 
 # App Routing
 if 'proceeded_to_test' not in st.session_state:
