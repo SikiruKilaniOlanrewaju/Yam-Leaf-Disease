@@ -135,7 +135,9 @@ def show_leaf_disease_detection():
     **{t('Please upload a leaf image of any Yam')}**
     """)
 
-    model = keras.models.load_model('Training/model/Leaf Deases(96,88).h5')
+    from keras.models import load_model
+    model = load_model("Training/model/Leaf Deases(96,88).h5", compile=False, safe_mode=False)
+
 
     label_name = ['cab', 'Black rot', 'rust', 'healthy', 'mildew',
                   'healthy', 'leaf spot Gray leaf spot', 'Common rust', 'Leaf Blight', 'healthy', 
