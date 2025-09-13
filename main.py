@@ -135,7 +135,6 @@ def show_leaf_disease_detection():
     **{t('Please upload a leaf image of any Yam')}**
     """)
 
-    from keras.models import load_model
     model = load_model("Training/model/Leaf Deases(96,88).h5", compile=False, safe_mode=False)
 
 
